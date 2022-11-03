@@ -13,7 +13,6 @@ jobs:
     steps:
       - uses: 8BitJonny/gh-get-current-pr@2.1.3
         id: PR
-      - run: echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
@@ -25,4 +24,4 @@ jobs:
           subject: Test github action email
           to: anatolyburtsev@yandex.ru
           from: Myself
-          body: GITHUB_REF ${{github.GITHUB_REF}} ${{github.github_ref}} Link ${{steps.PR.outputs.pr_url}} Build job of ${{github.repository}} completed successfully!
+          body: Link to PR ${{steps.PR.outputs.pr_url}}\n PR description ${{steps.PR.title}}\n PR author ${{steps.PR.login}}\n PR merged at ${{steps.PR.merged_at}}
