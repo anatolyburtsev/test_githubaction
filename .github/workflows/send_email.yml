@@ -24,4 +24,6 @@ jobs:
           subject: Test github action email
           to: anatolyburtsev@yandex.ru
           from: Myself
-          body: PR title ${{steps.PR.pr_title}}\n Link to PR ${{steps.PR.outputs.pr_url}}\n PR merged at ${{steps.PR.pr_merged_at}}
+          body: PR \#${{steps.PR.outputs.number}} title ${{steps.PR.outputs.pr_title}}
+            Link to PR ${{steps.PR.outputs.pr_url}}
+            PR merged at ${{steps.PR.outputs.pr_merged_at}}
