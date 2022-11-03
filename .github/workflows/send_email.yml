@@ -1,0 +1,25 @@
+name: email
+
+on:
+  push:
+    branches:
+      - master
+#    paths:
+#      - "A/**"
+
+jobs:
+  email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.APP_PASSWORD}}
+          subject: Test github action email
+          to: anatolyburtsev@yandex.ru
+          from: Myself
+          body: Build job of ${{github.repository}} completed successfully!
